@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
 
 int main()
@@ -6,21 +7,26 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int a, b, n;
-    cin >> a >> b >> n;
-    int ar[n];
-    for (int i = 0; i < n; i++)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        cin >> ar[i];
-    }
+        ll a, b, n;
+        cin >> a >> b >> n;
+        ll ar[n];
+        for (ll i = 0; i < n; i++)
+        {
+            cin >> ar[i];
+        }
 
-    int res = b;
-    for (int i = 0; i < n; i++)
-    {
-        res += min(a - 1, ar[i]);
-    }
+        ll res = b;
+        for (ll i = 0; i < n; i++)
+        {
+            res += min(a - 1, ar[i]);
+        }
 
-    cout << res << '\n';
+        cout << res << '\n';
+    }
 
     return 0;
 }
