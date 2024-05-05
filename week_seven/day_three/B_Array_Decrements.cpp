@@ -24,13 +24,19 @@ int main()
             cin >> b[i];
         }
 
-        int dif = a[0] - b[0];
+        int dif = INT_MAX;
+        for (int i = 0; i < n; i++)
+        {
+            if (b[i] != 0)
+                dif = min(dif, a[i] - b[i]);
+        }
+
         bool flag = true;
         for (int i = 0; i < n; i++)
         {
             if (a[i] >= b[i])
             {
-                if (b[i] != 0)
+                if (b[i] > 0)
                 {
                     if (dif != a[i] - b[i])
                     {
