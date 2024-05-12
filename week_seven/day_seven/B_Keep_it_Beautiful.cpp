@@ -6,41 +6,52 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        cin >> v[i];
-    }
-
-    bool is_br = false;
-    cout << v[0];
-    for (int i = 1; i < n; i++)
-    {
-
-        if (is_br == false)
+        int n;
+        cin >> n;
+        vector<int> v(n);
+        for (int i = 0; i < n; i++)
         {
-            if (v[i] >= v[i - 1])
+            cin >> v[i];
+        }
+
+        bool is_br = false;
+        string s(n, '0');
+        bool flag = false;
+        int mx;
+
+        s[0] = '1';
+        mx = v[0];
+        for (int i = 1; i < n; i++)
+        {
+            if (!flag)
             {
-                cout << v[i];
-            }
-            else if (v[i] < v[i - 1])
-            {
-                if (v[0]>=v[i])
+                if (v[i] >= mx)
                 {
-                    // cout << 1;
-                    cout << v[i];
-                    is_br = true;
+                    s[i] = '1';
+                    mx = v[i];
+                }
+                else if (v[0] >= v[i])
+                {
+                    flag = true;
+                    s[i] = '1';
+                    mx = v[i];
                 }
             }
-        }else{
-            if( v[i] <= v[0]){
-                cout << v[i];
-            }else if(v[i] >= v[i-1] && v[i] >= v[0]){
-                cout << v[i];
+            else
+            {
+                if (v[i] >= mx && v[i] <= v[0])
+                {
+                    s[i] = '1';
+                    mx = v[i];
+                }
             }
         }
+
+        cout << s << '\n';
     }
 
     return 0;
