@@ -7,11 +7,6 @@ ll gcd(ll a, ll b)
     return __gcd(a, b);
 }
 
-ll lcm(ll a, ll b)
-{
-    return ((a / gcd(a, b)) * b);
-}
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -31,28 +26,19 @@ int main()
         mx = max(mx, ar[i]);
     }
 
-    ll sum = 0;
-    for (ll i = 0; i < n; i++)
+    ll x = (mx * n);
+    for (int i = 0; i < n; i++)
     {
-        sum += ar[i];
+        x -= ar[i];
     }
 
-    ll x = (mx * n) - sum;
-
-    ll g = ar[0];
+    ll g = mx - ar[0];
     for (int i = 1; i < n; i++)
     {
-        g = gcd(sum, g);
+        g = gcd(mx - ar[i], g);
     }
 
-    if (n == 2)
-    {
-        cout << g << " " << x << '\n';
-    }
-    else
-    {
-        cout << x / g << " " << g << '\n';
-    }
+    cout << x / g << " " << g << '\n';
 
     return 0;
 }
