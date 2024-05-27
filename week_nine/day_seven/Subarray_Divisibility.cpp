@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
 
 int main()
@@ -14,13 +15,21 @@ int main()
         cin >> ar[i];
     }
 
-    map<int, int> mp;
+    map<ll, ll> mp;
     mp[0] = 1;
-    int cnt = 0, sum = 0;
-    for (int i = 0; i < n; i++)
+    ll cnt = 0;
+    ll sum = 0;
+    for (ll i = 0; i < n; i++)
     {
         sum += ar[i];
+        int rem = sum % n;
+        if (rem < 0)
+            rem += n;
+        cnt += mp[rem];
+        mp[rem]++;
     }
+
+    cout << cnt << '\n';
 
     return 0;
 }

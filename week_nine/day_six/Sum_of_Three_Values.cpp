@@ -30,7 +30,7 @@ int main()
         while (l < r && l < n)
         {
             int sum = v[i].first + v[l].first + v[r].first;
-            // cout << sum << endl;
+
             if (sum == x)
             {
                 idx1 = v[i].second;
