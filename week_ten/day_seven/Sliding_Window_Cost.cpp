@@ -24,21 +24,14 @@ int main()
     }
 
     pbds<pair<ll, ll>> p;
-    ll l = 0, r = 0, ans = 0;
+    ll l = 0, r = 0, cost = 0, old_mid = 0, sum = 0;
     while (r < n)
     {
         p.insert({ar[r], r});
         if (r - l + 1 == k)
         {
             ll mid = k / 2;
-            auto it = p.find_by_order(mid);
-            ll cnt = 0;
-            for (pair<ll, ll> val : p)
-            {
-                cnt += abs(val.first - it->first);
-            }
-
-            cout << cnt << " ";
+            cost = ;
             p.erase({ar[l], l});
             l++;
         }
