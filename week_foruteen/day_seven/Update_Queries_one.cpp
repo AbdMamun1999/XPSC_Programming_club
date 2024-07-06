@@ -14,8 +14,6 @@ int main() {
     string a,b;
     cin >> a;
 
-    cout << n << m << endl;
-
     set<int>st;
     for (int i = 0; i < m; i++)
     {
