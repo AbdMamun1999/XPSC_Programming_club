@@ -10,8 +10,11 @@ int main() {
     while (t--)
     {
         string s;
-    if(s=="bca"||s=="cab") cout << "NO" << '\n';
-    else cout << "YES" << '\n';
+        cin >> s;
+        if(s=="bca"||s=="cab") 
+            cout << "NO" << '\n';
+        else 
+            cout << "YES" << '\n';
     }
     
     return 0;
