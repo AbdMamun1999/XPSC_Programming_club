@@ -5,20 +5,32 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
  
-    int n;
-    cin >> n;
-
-    string s;
-    cin >> s;
-
-    int ans = 0,cnt = 0;
-    for (auto ch : s)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        if(ch == 'A')cnt++;
-        else ans+=cnt;
-    }
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+        int ans = n-1;
+        for (auto ch : s)
+        {
+            if(ch=='B')ans--;
+            else break;
+        }
 
-    cout << ans << '\n';
+        reverse(s.begin(),s.end());
+        for (auto ch : s)
+        {
+            if(ch=='A')ans--;
+            else break;
+        }
+
+        if(ans < 0) cout<< 0 << '\n';
+        else cout << ans << '\n';
+    }
+    
     
     return 0;
 }
