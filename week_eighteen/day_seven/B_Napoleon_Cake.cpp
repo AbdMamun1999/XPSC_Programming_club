@@ -22,7 +22,7 @@ int main() {
         int ans = 0;
         for (int i = n-1; i >= 0; i--)
         {
-            if(a[i] > 0 && ans == 0) ans+=a[i];
+            if(a[i]>0) ans = max(ans,a[i]);
             if(ans > 0){
                 v.push_back(1);
                 ans--;
