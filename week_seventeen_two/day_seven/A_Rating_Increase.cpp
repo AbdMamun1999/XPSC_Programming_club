@@ -12,27 +12,29 @@ int main() {
         string s;
         cin >> s;
 
-        int idx = 0;
+        int n = s.size();
+        int x,y;
         bool flag = false;
-        for (int i = 0; i < s.size()-1; i++)
+        for (int i = 1; i < n; i++)
         {
-            if(s[i]=='0' && s[i+1]!='0'){
-                idx = i;
+            
+
+            string a = s.substr(0,i);
+            string b = s.substr(i,n-i);
+
+            x = stoi(a);
+            y = stoi(b);
+
+            if(a[0]!='0' && b[0]!='0'&&x < y && a+b == s){
                 flag = true;
                 break;
             }
+            
         }
 
-        if(flag){
-            if(stoi(s.substr(0,idx+1)) < stoi(s.substr(idx,s.size()))){
-                cout << stoi(s.substr(0,idx+1)) << " " << stoi(s.substr(idx,s.size())) << '\n';
-            }else cout << -1 << '\n';
-        }else{
-            if(stoi(s.substr(0,1)) < stoi(s.substr(1,s.size()))){
-                cout << stoi(s.substr(0,1)) << " " << stoi(s.substr(1,s.size())) << '\n';
-            }else cout << -1 << '\n';
-        }
-    
+        if(flag) cout << x << " " <<y << '\n';
+        else cout << -1 << '\n';
+        
     }
     
     
