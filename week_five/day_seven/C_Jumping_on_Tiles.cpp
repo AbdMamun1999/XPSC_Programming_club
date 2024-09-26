@@ -1,45 +1,59 @@
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
-    string s;
-    cin >> s;
-
-    int n = s.size();
-    int first, last;
-    int x = s[0] - 'a';
-    int y = s[n - 1] - 'a';
-
-    if (x > y)
+ 
+    int t;
+    cin >> t;
+    while (t--)
     {
-        first = y;
-        last = x;
-    }
-    else
-    {
-        last = y;
-        first = x;
-    }
+        string s;
+        cin >> s;
 
-    int cnt[n];
-    map<char, vector<int>> idx;
-    for (int i = 0; i < n; i++)
-    {
-        cnt[s[i] - 'a']++;
-        idx[s[i]].push_back(i);
-    }
-
-    for (auto i : idx)
-    {
-        for (auto j : i.second)
+        int n = s.size();
+        map<char,vector<int>>ch_idx;
+        for (int i = 0; i < n; i++)
         {
-            cout << i.first << " " << j << endl;
+            ch_idx[s[i]].push_back(i+1);
         }
-    }
 
+        int m = 0;
+        vector<int>ans;
+        if(s[n-1]>s[0]){
+            for (char i = s[0]; i <= s[n-1]; i++)
+            {
+                int size = ch_idx[i].size();
+                m+=size;
+                for (auto val : ch_idx[i])
+                {
+                    ans.push_back(val);
+                }
+            }
+        }else{
+            for (char i = s[0]; i >= s[n-1]; i--)
+            {
+                int size = ch_idx[i].size();
+                m+=size;
+                for (auto val : ch_idx[i])
+                {
+                    ans.push_back(val);
+                }
+            }
+        }
+        
+        int cost = abs(s[0]-s[n-1]);
+
+        cout << cost << " " << m << '\n';
+        for (auto val : ans)
+        {
+            cout << val << " ";
+        }
+        cout << '\n';
+    }
+    
+    
     return 0;
 }
